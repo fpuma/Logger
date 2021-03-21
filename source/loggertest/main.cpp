@@ -1,6 +1,8 @@
 #include <logger/logger.h>
 #include <logger/output/consolelogoutput.h>
 
+#include <utils/formatstring.h>
+
 int main( int argc, char* argv[] )
 {
     puma::Logger logger;
@@ -11,17 +13,17 @@ int main( int argc, char* argv[] )
 
     for ( int i = 0; i < 2; ++i )
     {
-        logger.info( logCategory, "Test log number: %d. User: %s", i, "fpuma" );
+        logger.info( logCategory, puma::formatString("Test log number: %d. User: %s", i, "fpuma").c_str() );
     }
 
     for ( int i = 0; i < 2; ++i )
     {
-        logger.warning( logCategory, "Test log number: %d. User: %s", i, "fpuma" );
+        logger.warning( logCategory, puma::formatString( "Test log number: %d. User: %s", i, "fpuma" ).c_str() );
     }
 
     for ( int i = 0; i < 2; ++i )
     {
-        logger.error( logCategory, "Test log number: %d. User: %s", i, "fpuma" );
+        logger.error( logCategory, puma::formatString( "Test log number: %d. User: %s", i, "fpuma" ).c_str() );
     }
 
     logger.removeOutput<puma::ConsoleLogOutput>();

@@ -4,7 +4,6 @@
 #include <logger/logdefinitions.h>
 
 #include <utils/containers/uniquerealizationcontainer.h>
-#include <utils/formatstring.h>
 #include <utils/noncopyable.h>
 #include <utils/numerictypes.h>
 
@@ -16,28 +15,19 @@ namespace puma
     {
     public:
 
-        void info( const LogCategory& _category, const char* _format, ... )
+        void info( const LogCategory& _category, const char* _log)
         {
-            va_list args;
-            va_start( args, _format );
-            addLog( getCategoryInfo(_category), LogType::Info, formatString( _format, args ) );
-            va_end( args );
+            addLog( getCategoryInfo(_category), LogType::Info, _log );
         }
 
-        void warning( const LogCategory& _category, const char* _format, ... )
+        void warning( const LogCategory& _category, const char* _log)
         {
-            va_list args;
-            va_start( args, _format );
-            addLog( getCategoryInfo( _category ), LogType::Warning, formatString( _format, args ) );
-            va_end( args );
+            addLog( getCategoryInfo( _category ), LogType::Warning, _log );
         }
 
-        void error( const LogCategory& _category, const char* _format, ... )
+        void error( const LogCategory& _category, const char* _log)
         {
-            va_list args;
-            va_start(args, _format);
-            addLog( getCategoryInfo( _category ), LogType::Error, formatString( _format, args ) );
-            va_end( args );
+            addLog( getCategoryInfo( _category ), LogType::Error,  _log );
         }
 
         LogCategory registerCategory( const std::string& _categoryName )
