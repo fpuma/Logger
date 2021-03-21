@@ -32,8 +32,9 @@ namespace puma
 
         LogCategory registerCategory( const std::string& _categoryName )
         {
+            LogCategory result( (u32)m_categoryNames.size() );
             m_categoryNames.push_back( _categoryName );
-            return LogCategory( (u32)m_categoryNames.size() );
+            return result;
         }
 
         template<class OutputClass>
