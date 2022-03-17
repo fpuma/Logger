@@ -16,14 +16,7 @@ namespace puma
 
     constexpr u32 kInvalidLogCategory = kMaxU32;
 
-    class LogCategory : public GenericID<u32, kInvalidLogCategory>
-    {
-    public:
-        LogCategory() {}
-        LogCategory( u32 _id )
-            : GenericID( _id )
-        {}
-    };
+    DECLARE_GENERIC_ID( LogCategory, u32, kInvalidLogCategory );
 
     struct CategoryInfo
     {
