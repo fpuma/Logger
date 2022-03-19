@@ -49,7 +49,7 @@ namespace puma
         }
 
         template<class OutputClass>
-        bool removeOutput()
+        void removeOutput()
         {
             m_outputs.remove<OutputClass>();
         }
