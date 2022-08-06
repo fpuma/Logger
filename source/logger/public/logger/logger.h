@@ -57,7 +57,7 @@ namespace puma
     private:
         void addLog( const CategoryInfo& _categoryInfo, LogType _type, const std::string& _report )
         {
-            m_outputs.traverse( [&]( const ILogOutput* output ) 
+            m_outputs.visit( [&]( std::shared_ptr<const ILogOutput> output ) 
             {
                 output->print( _categoryInfo, _type, _report.c_str() );
             } );
